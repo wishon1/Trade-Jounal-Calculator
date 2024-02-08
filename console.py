@@ -21,16 +21,15 @@ class TradeJournal(cmd.Cmd):
         """print, if it's in the interactive mode"""
         if sys.stdin.isatty():
             print("\t\t--------------Please enter a number to select------------")
-            option = []
             for key, value in self.class_option.items():
                 print("{}: {}".format(key, value))
-            option = int(input("Enter a number to select: "))
+            option = input("Enter a number to select: ")
 
-            if len(option) > or < 1:
+            if len(option) == 0 or len(option) > 1:
                 print("Invalid input")
             else:
-                for key, value in self.class_option.items():
-                    if option == key:
+                option = int(option)
+                if option in self.class_option:
                     print("You just selected: {}".format(value)
                 else:
                     print("invalid syntax")
